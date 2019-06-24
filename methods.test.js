@@ -1,4 +1,4 @@
-const { map, filter } = require('./methods');
+const { map, filter, findIndex } = require('./methods');
 
 describe('map', () => {
   it('returns an array of doubled values from an array', () => {
@@ -31,6 +31,26 @@ describe('filter', () => {
     const nums = [1, 2, 3, 4, 5];
     const result = filter(nums, num => num < 5);
     expect(result).toEqual([1, 2, 3, 4]);
+  });
+});
+
+describe('findIndex', () => {
+  it('returns the first index of a specific number from an array', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = findIndex(nums, num => num === 3);
+    expect(result).toEqual(2);
+  });
+
+  it('returns -1 if it can`t find the value it is looking for', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = findIndex(nums, num => num === 6);
+    expect(result).toEqual(-1);
+  });
+
+  it('returns the first index of an even number from an array', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = findIndex(nums, num => num % 2 === 0);
+    expect(result).toEqual(1);
   });
 });
 

@@ -14,4 +14,11 @@ const filter = (arr, func) => {
   return newArr;
 };
 
-module.exports = { map, filter };
+const findIndex = (arr, func) => {
+  for(let i = 0; i < arr.length; i++) {
+    if(func(arr[i])) return i;
+  }
+  return -1;
+};
+
+module.exports = { map, filter, findIndex };
