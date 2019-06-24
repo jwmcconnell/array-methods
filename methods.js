@@ -1,9 +1,17 @@
 const map = (arr, func) => {
-  let newArr = Array(arr.length);
+  const newArr = [];
   for(let i = 0; i < arr.length; i++) {
     newArr[i] = func(arr[i]);
   }
   return newArr;
 };
 
-module.exports = { map };
+const filter = (arr, func) => {
+  let newArr = [];
+  for(let i = 0; i < arr.length; i++) {
+    if(func(arr[i])) newArr[newArr.length] = arr[i];
+  }
+  return newArr;
+};
+
+module.exports = { map, filter };

@@ -1,4 +1,4 @@
-const { map } = require('./methods');
+const { map, filter } = require('./methods');
 
 describe('map', () => {
   it('returns an array of doubled values from an array', () => {
@@ -19,3 +19,18 @@ describe('map', () => {
     expect(result).toEqual([-2, -1, 0, 1, 2]);
   });
 });
+
+describe('filter', () => {
+  it('returns an array without the odd values from an array', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = filter(nums, num => num % 2 === 0);
+    expect(result).toEqual([2, 4]);
+  });
+
+  it('returns an array with only values below a number from an array', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = filter(nums, num => num < 5);
+    expect(result).toEqual([1, 2, 3, 4]);
+  });
+});
+
