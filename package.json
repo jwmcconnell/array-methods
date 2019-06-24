@@ -1,0 +1,24 @@
+{
+  "name": "array-methods",
+  "version": "1.0.0",
+  "description": "Implement array methods",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwmcconnell/array-methods.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwmcconnell/array-methods/issues"
+  },
+  "homepage": "https://github.com/jwmcconnell/array-methods#readme",
+  "devDependencies": {
+    "eslint": "^6.0.0",
+    "jest": "^24.8.0"
+  }
+}
