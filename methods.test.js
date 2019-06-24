@@ -12,4 +12,10 @@ describe('map', () => {
     const result = map(nums, num => num * num);
     expect(result).toEqual([1, 4, 9, 16, 25]);
   });
+
+  it('returns an array of subtracted values from an array', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = map(nums, num => num - 3);
+    expect(result).toEqual([-2, -1, 0, 1, 2]);
+  });
 });
