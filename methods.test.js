@@ -215,4 +215,20 @@ describe('forEach', () => {
     expect(mockCallback).toHaveBeenCalledWith(1);
     expect(mockCallback).toHaveBeenCalledWith(3);
   });
+
+  it('calls the function for every item including undefined', () => {
+    const nums = [1, undefined, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not skip over undefined and calls the function for each item', () => {
+    const nums = [1, undefined, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledWith(1);
+    expect(mockCallback).toHaveBeenCalledWith(undefined);
+    expect(mockCallback).toHaveBeenCalledWith(3);
+  });
 });
