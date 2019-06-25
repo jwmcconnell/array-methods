@@ -121,6 +121,41 @@ describe('reduce', () => {
       '9': 1
     });
   });
+
+  it('skips over holes and does not call the function', () => {
+    const nums = [1, 2, 1, 1,, 8, 2, 2, 2, 2, 8, 9];
+    const result = 
+      reduce(nums, 
+        (acc, item) => {
+          !(item in acc) ? acc[item] = 1 : acc[item]++;
+          return acc;
+        }, 
+        {});
+    expect(result).toEqual({
+      '1': 3,
+      '2': 5,
+      '8': 2,
+      '9': 1
+    });
+  });
+
+  it('does not skip over undefined', () => {
+    const nums = [1, 2, 1, 1, undefined, 8, 2, 2, 2, 2, 8, 9];
+    const result = 
+      reduce(nums, 
+        (acc, item) => {
+          !(item in acc) ? acc[item] = 1 : acc[item]++;
+          return acc;
+        }, 
+        {});
+    expect(result).toEqual({
+      '1': 3,
+      '2': 5,
+      'undefined': 1,
+      '8': 2,
+      '9': 1
+    });
+  });
 });
 
 describe('every', () => {
