@@ -21,4 +21,22 @@ const findIndex = (arr, func) => {
   return -1;
 };
 
-module.exports = { map, filter, findIndex };
+const reduce = (arr, func, initialValue) => {
+  let accumulator;
+  let count = 0;
+
+  if(initialValue !== undefined) {
+    accumulator = initialValue;
+  } else {
+    accumulator = arr[0];
+    count = 1;
+  }
+
+  for(count; count < arr.length; count++) {
+    accumulator = func(accumulator, arr[count]);
+  }
+  
+  return accumulator;
+};
+
+module.exports = { map, filter, findIndex, reduce };

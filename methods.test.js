@@ -1,4 +1,4 @@
-const { map, filter, findIndex } = require('./methods');
+const { map, filter, findIndex, reduce } = require('./methods');
 
 describe('map', () => {
   it('returns an array of doubled values from an array', () => {
@@ -53,4 +53,37 @@ describe('findIndex', () => {
     expect(result).toEqual(1);
   });
 });
+
+describe('reduce', () => {
+  it('returns a sum of all values in an array', () => {
+    const nums = [1, 2, 3, 4, 10];
+    const result = reduce(nums, (acc, item) => acc + item);
+    expect(result).toEqual(20);
+  });
+
+  it('returns a sum of all values in an array starting from an initial value', () => {
+    const nums = [1, 2, 3, 4, 10];
+    const result = reduce(nums, (acc, item) => acc + item, 5);
+    expect(result).toEqual(25);
+  });
+
+  it('returns a list of how many times a number repeates in an array', () => {
+    const nums = [1, 2, 1, 1, 10, 8, 2, 2, 2, 2, 8, 9];
+    const result = 
+      reduce(nums, 
+        (acc, item) => {
+          !(item in acc) ? acc[item] = 1 : acc[item]++;
+          return acc;
+        }, 
+        {});
+    expect(result).toEqual({
+      '1': 3,
+      '2': 5,
+      '10': 1,
+      '8': 2,
+      '9': 1
+    });
+  });
+});
+
 
