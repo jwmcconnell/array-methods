@@ -45,6 +45,18 @@ describe('filter', () => {
     const result = filter(nums, num => num < 5);
     expect(result).toEqual([1, 2, 3, 4]);
   });
+
+  it('skips over holes and doesn`t add it to the filtered array', () => {
+    const nums = [1, 2, 3,, 5, 6];
+    const result = filter(nums, nums => nums < 6);
+    expect(result).toEqual([1, 2, 3, 5]);
+  });
+
+  it('does not skip over undefined values', () => {
+    const nums = [1, 2, 3, undefined, 4, 5];
+    const result = filter(nums, nums => nums !== 0);
+    expect(result).toEqual([1, 2, 3, undefined, 4, 5]);
+  });
 });
 
 describe('findIndex', () => {

@@ -9,7 +9,8 @@ const map = (arr, func) => {
 const filter = (arr, func) => {
   let newArr = [];
   for(let i = 0; i < arr.length; i++) {
-    if(func(arr[i])) newArr[newArr.length] = arr[i];
+    if(Object.prototype.hasOwnProperty.call(arr, i)) 
+      if(func(arr[i])) newArr[newArr.length] = arr[i];
   }
   return newArr;
 };
