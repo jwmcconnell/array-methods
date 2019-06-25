@@ -53,7 +53,7 @@ const every = (arr, func) => {
 const forEach = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
     if(arr.hasOwnProperty(i))
-      func(arr[i]);
+      func(arr[i], i);
   }
   return undefined;
 };

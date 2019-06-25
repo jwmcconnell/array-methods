@@ -226,9 +226,9 @@ describe('forEach', () => {
     const nums = [1, 2, 3];
     const mockCallback = jest.fn(num => num * 2);
     forEach(nums, mockCallback);
-    expect(mockCallback).toHaveBeenCalledWith(1);
-    expect(mockCallback).toHaveBeenCalledWith(2);
-    expect(mockCallback).toHaveBeenCalledWith(3);
+    expect(mockCallback).toHaveBeenCalledWith(1, 0);
+    expect(mockCallback).toHaveBeenCalledWith(2, 1);
+    expect(mockCallback).toHaveBeenCalledWith(3, 2);
   });
 
   it('calls the function for every item not including holes', () => {
@@ -242,8 +242,8 @@ describe('forEach', () => {
     const nums = [1,, 3];
     const mockCallback = jest.fn(num => num * 2);
     forEach(nums, mockCallback);
-    expect(mockCallback).toHaveBeenCalledWith(1);
-    expect(mockCallback).toHaveBeenCalledWith(3);
+    expect(mockCallback).toHaveBeenCalledWith(1, 0);
+    expect(mockCallback).toHaveBeenCalledWith(3, 2);
   });
 
   it('calls the function for every item including undefined', () => {
@@ -257,8 +257,17 @@ describe('forEach', () => {
     const nums = [1, undefined, 3];
     const mockCallback = jest.fn(num => num * 2);
     forEach(nums, mockCallback);
-    expect(mockCallback).toHaveBeenCalledWith(1);
-    expect(mockCallback).toHaveBeenCalledWith(undefined);
-    expect(mockCallback).toHaveBeenCalledWith(3);
+    expect(mockCallback).toHaveBeenCalledWith(1, 0);
+    expect(mockCallback).toHaveBeenCalledWith(undefined, 1);
+    expect(mockCallback).toHaveBeenCalledWith(3, 2);
+  });
+
+  it('uses the current index of the item in the callback', () => {
+    const nums = [1, 2, 3];
+    const mockCallback = jest.fn((num, i) => i * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledWith(1, 0);
+    expect(mockCallback).toHaveBeenCalledWith(2, 1);
+    expect(mockCallback).toHaveBeenCalledWith(3, 2);
   });
 });
