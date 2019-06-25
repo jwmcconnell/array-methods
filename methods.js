@@ -1,7 +1,7 @@
 const map = (arr, func) => {
   const newArr = [];
   for(let i = 0; i < arr.length; i++) {
-    if(Object.prototype.hasOwnProperty.call(arr, i)) newArr[i] = func(arr[i]);
+    if(arr.hasOwnProperty(i)) newArr[i] = func(arr[i]);
   }
   return newArr;
 };
@@ -9,7 +9,7 @@ const map = (arr, func) => {
 const filter = (arr, func) => {
   let newArr = [];
   for(let i = 0; i < arr.length; i++) {
-    if(Object.prototype.hasOwnProperty.call(arr, i)) 
+    if(arr.hasOwnProperty(i))
       if(func(arr[i])) newArr[newArr.length] = arr[i];
   }
   return newArr;
@@ -17,7 +17,7 @@ const filter = (arr, func) => {
 
 const findIndex = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
-    if(Object.prototype.hasOwnProperty.call(arr, i)) 
+    if(arr.hasOwnProperty(i))
       if(func(arr[i])) return i;
   }
   return -1;
@@ -35,7 +35,7 @@ const reduce = (arr, func, initialValue) => {
   }
 
   for(count; count < arr.length; count++) {
-    if(Object.prototype.hasOwnProperty.call(arr, count)) 
+    if(arr.hasOwnProperty(count)) 
       accumulator = func(accumulator, arr[count]);
   }
 
@@ -44,7 +44,7 @@ const reduce = (arr, func, initialValue) => {
 
 const every = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
-    if(Object.prototype.hasOwnProperty.call(arr, i)) 
+    if(arr.hasOwnProperty(i))
       if(!func(arr[i])) return false;
   }
   return true;
