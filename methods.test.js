@@ -1,4 +1,4 @@
-const { map, filter, findIndex, reduce } = require('./methods');
+const { map, filter, findIndex, reduce, every } = require('./methods');
 
 describe('map', () => {
   it('returns an array of doubled values from an array', () => {
@@ -83,6 +83,20 @@ describe('reduce', () => {
       '8': 2,
       '9': 1
     });
+  });
+});
+
+describe('every', () => {
+  it('returns true testing a list of all positive numbers for them being positive', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = every(nums, num => num > 0);
+    expect(result).toEqual(true);
+  });
+
+  it('returns false testing a list of numbers for them being positive with one being negative', () => {
+    const nums = [1, 2, 3, -1, 4, 5];
+    const result = every(nums, num => num > 0);
+    expect(result).toEqual(false);
   });
 });
 

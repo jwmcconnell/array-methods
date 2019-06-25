@@ -35,8 +35,15 @@ const reduce = (arr, func, initialValue) => {
   for(count; count < arr.length; count++) {
     accumulator = func(accumulator, arr[count]);
   }
-  
+
   return accumulator;
 };
 
-module.exports = { map, filter, findIndex, reduce };
+const every = (arr, func) => {
+  for(let i = 0; i < arr.length; i++) {
+    if(!func(arr[i])) return false;
+  }
+  return true;
+};
+
+module.exports = { map, filter, findIndex, reduce, every };
