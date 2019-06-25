@@ -174,6 +174,12 @@ describe('reduce', () => {
       '9': 1
     });
   });
+
+  it('adds numbers below a certain index', () => {
+    const nums = [1, 2, 3, 4, 10];
+    const result = reduce(nums, (acc, item, i) => i < 4 ? acc + item : acc);
+    expect(result).toEqual(10);
+  });
 });
 
 describe('every', () => {

@@ -36,7 +36,7 @@ const reduce = (arr, func, initialValue) => {
 
   for(count; count < arr.length; count++) {
     if(arr.hasOwnProperty(count)) 
-      accumulator = func(accumulator, arr[count]);
+      accumulator = func(accumulator, arr[count], count);
   }
 
   return accumulator;
