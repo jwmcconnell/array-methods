@@ -101,6 +101,12 @@ describe('findIndex', () => {
     const result = findIndex(nums, num => num !== 0);
     expect(result).toEqual(3);
   });
+
+  it('finds a value by its index', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = findIndex(nums, (num, i) => i === 2);
+    expect(result).toEqual(2);
+  });
 });
 
 describe('reduce', () => {

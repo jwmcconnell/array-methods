@@ -18,7 +18,7 @@ const filter = (arr, func) => {
 const findIndex = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
     if(arr.hasOwnProperty(i))
-      if(func(arr[i])) return i;
+      if(func(arr[i], i)) return i;
   }
   return -1;
 };
