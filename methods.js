@@ -25,18 +25,18 @@ const findIndex = (arr, func) => {
 
 const reduce = (arr, func, initialValue) => {
   let accumulator;
-  let count = 0;
+  let i = 0;
 
   if(initialValue !== undefined) {
     accumulator = initialValue;
   } else {
     accumulator = arr[0];
-    count = 1;
+    i = 1;
   }
 
-  for(count; count < arr.length; count++) {
-    if(arr.hasOwnProperty(count)) 
-      accumulator = func(accumulator, arr[count], count);
+  for(i; i < arr.length; i++) {
+    if(arr.hasOwnProperty(i)) 
+      accumulator = func(accumulator, arr[i], i);
   }
 
   return accumulator;
