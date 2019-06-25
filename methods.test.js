@@ -206,6 +206,12 @@ describe('every', () => {
     const result = every(nums, num => num === 0);
     expect(result).toEqual(false);
   });
+
+  it('returns true for all values being bellow a certain index', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = every(nums, (num, i) => i < 5);
+    expect(result).toEqual(true);
+  });
 });
 
 describe('forEach', () => {

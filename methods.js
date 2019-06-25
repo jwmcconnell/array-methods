@@ -45,7 +45,7 @@ const reduce = (arr, func, initialValue) => {
 const every = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
     if(arr.hasOwnProperty(i))
-      if(!func(arr[i])) return false;
+      if(!func(arr[i], i)) return false;
   }
   return true;
 };
