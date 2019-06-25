@@ -200,4 +200,19 @@ describe('forEach', () => {
     expect(mockCallback).toHaveBeenCalledWith(2);
     expect(mockCallback).toHaveBeenCalledWith(3);
   });
+
+  it('calls the function for every item not including holes', () => {
+    const nums = [1,, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledTimes(2);
+  });
+
+  it('skips over holes and does not call the function', () => {
+    const nums = [1,, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledWith(1);
+    expect(mockCallback).toHaveBeenCalledWith(3);
+  });
 });
