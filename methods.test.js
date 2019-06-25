@@ -77,6 +77,18 @@ describe('findIndex', () => {
     const result = findIndex(nums, num => num % 2 === 0);
     expect(result).toEqual(1);
   });
+
+  it('skips over holes and does not call the function', () => {
+    const nums = [0, 0, 0,, 5, 6];
+    const result = findIndex(nums, num => num !== 0);
+    expect(result).toEqual(4);
+  });  
+
+  it('does not skip over undifined values', () => {
+    const nums = [0, 0, 0, undefined, 5, 6];
+    const result = findIndex(nums, num => num !== 0);
+    expect(result).toEqual(3);
+  });
 });
 
 describe('reduce', () => {
