@@ -170,6 +170,18 @@ describe('every', () => {
     const result = every(nums, num => num > 0);
     expect(result).toEqual(false);
   });
+
+  it('skips over holes and does not call the function', () => {
+    const nums = [0, 0, 0,, 0];
+    const result = every(nums, num => num === 0);
+    expect(result).toEqual(true);
+  });
+
+  it('does not skip over undefined values', () => {
+    const nums = [0, 0, 0, undefined, 0];
+    const result = every(nums, num => num === 0);
+    expect(result).toEqual(false);
+  });
 });
 
 

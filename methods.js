@@ -44,7 +44,8 @@ const reduce = (arr, func, initialValue) => {
 
 const every = (arr, func) => {
   for(let i = 0; i < arr.length; i++) {
-    if(!func(arr[i])) return false;
+    if(Object.prototype.hasOwnProperty.call(arr, i)) 
+      if(!func(arr[i])) return false;
   }
   return true;
 };
