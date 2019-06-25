@@ -50,4 +50,11 @@ const every = (arr, func) => {
   return true;
 };
 
-module.exports = { map, filter, findIndex, reduce, every };
+const forEach = (arr, func) => {
+  for(let i = 0; i < arr.length; i++) {
+    func(arr[i]);
+  }
+  return undefined;
+};
+
+module.exports = { map, filter, findIndex, reduce, every, forEach };

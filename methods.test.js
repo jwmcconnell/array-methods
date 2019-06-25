@@ -1,5 +1,5 @@
 /* eslint-disable no-sparse-arrays */
-const { map, filter, findIndex, reduce, every } = require('./methods');
+const { map, filter, findIndex, reduce, every, forEach } = require('./methods');
 
 describe('map', () => {
   it('returns an array of doubled values from an array', () => {
@@ -184,4 +184,20 @@ describe('every', () => {
   });
 });
 
+describe('forEach', () => {
+  it('calls the callback for every item in the aray', () => {
+    const nums = [1, 2, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledTimes(3);
+  });
 
+  it('calls the function with each argument from the array', () => {
+    const nums = [1, 2, 3];
+    const mockCallback = jest.fn(num => num * 2);
+    forEach(nums, mockCallback);
+    expect(mockCallback).toHaveBeenCalledWith(1);
+    expect(mockCallback).toHaveBeenCalledWith(2);
+    expect(mockCallback).toHaveBeenCalledWith(3);
+  });
+});
