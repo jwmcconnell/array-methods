@@ -63,6 +63,12 @@ describe('filter', () => {
     const result = filter(nums, nums => nums !== 0);
     expect(result).toEqual([1, 2, 3, undefined, 4, 5]);
   });
+
+  it('returns an array of items with indices less than 2', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = filter(nums, (num, i) => i < 2);
+    expect(result).toEqual([1, 2]);
+  });
 });
 
 describe('findIndex', () => {

@@ -10,7 +10,7 @@ const filter = (arr, func) => {
   let newArr = [];
   for(let i = 0; i < arr.length; i++) {
     if(arr.hasOwnProperty(i))
-      if(func(arr[i])) newArr[newArr.length] = arr[i];
+      if(func(arr[i], i)) newArr[newArr.length] = arr[i];
   }
   return newArr;
 };
