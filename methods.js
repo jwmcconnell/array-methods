@@ -1,7 +1,7 @@
 const map = (arr, func) => {
   const newArr = [];
   for(let i = 0; i < arr.length; i++) {
-    if(arr.hasOwnProperty(i)) newArr[i] = func(arr[i]);
+    if(arr.hasOwnProperty(i)) newArr[i] = func(arr[i], i);
   }
   return newArr;
 };

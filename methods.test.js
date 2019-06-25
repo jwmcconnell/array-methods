@@ -31,6 +31,12 @@ describe('map', () => {
     const result = map(arr, () => 'Hello');
     expect(result).toEqual(['Hello', 'Hello']);
   });
+
+  it('returns an array of indices of the items', () => {
+    const nums = [1, 2, 3, 4, 5];
+    const result = map(nums, (num, i) => i);
+    expect(result).toEqual([0, 1, 2, 3, 4]);
+  });
 });
 
 describe('filter', () => {
