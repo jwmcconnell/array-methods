@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 const { map, filter, findIndex, reduce, every } = require('./methods');
 
 describe('map', () => {
@@ -17,6 +18,18 @@ describe('map', () => {
     const nums = [1, 2, 3, 4, 5];
     const result = map(nums, num => num - 3);
     expect(result).toEqual([-2, -1, 0, 1, 2]);
+  });
+
+  it('skips over holes and adds a hole in the new array', () => {
+    const nums = [1, 2, 3,, 5];
+    const result = map(nums, num => num ** 3);
+    expect(result).toEqual([1, 8, 27,, 125]);
+  });
+
+  it('does not skip over undefined values', () => {
+    const arr = [undefined, undefined];
+    const result = map(arr, () => 'Hello');
+    expect(result).toEqual(['Hello', 'Hello']);
   });
 });
 
