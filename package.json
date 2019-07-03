@@ -4,7 +4,9 @@
   "description": "Implement array methods",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest --verbose",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
